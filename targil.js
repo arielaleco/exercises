@@ -2,24 +2,24 @@
 function DoExcercise() {
 
     PrintThis("----- Excercise 1 -----");
-    //  targil1();
-    //ssss
+    targil1();
+    
     PrintThis("----- Excercise 2 -----");
     targil2();
     PrintThis("----- Excercise 3 -----");
-    //   targil3()
+    targil3()
     PrintThis("----- Excercise 4 -----");
-    //   targil4();
+    targil4();
     PrintThis("----- Excercise 5 -----");
-    //   targil5();
+    targil5();
     PrintThis("----- Excercise 6 -----");
-    //   targil6();
+    targil6();
 
 
-    PrintThis("");
-    PrintThis("");
-    PrintThis("");
-    PrintThis("");
+    // PrintThis("");
+    // PrintThis("");
+    // PrintThis("");
+    // PrintThis("");
 
 }
 function targil1() {
@@ -39,6 +39,17 @@ function targil1() {
     }
 }
 
+function checkSumOfDigist(strToCheck) {
+
+    var symOf = 0;
+
+    for (i = 0; i < strToCheck.length; i++)  // go over all digits
+    {
+        oneDigit = Number(strToCheck[i]);
+        symOf = symOf + (oneDigit * oneDigit);
+    }
+    return symOf;
+}
 function targil2() {
     //According to Wikipedia a happy number is defined by the following process:
     //"Starting with any positive integer, replace the number by the sum of the squares of its
@@ -48,13 +59,42 @@ function targil2() {
     //    (or sad numbers)". 
     //Write a JavaScript program to find and print the first 5 happy numbers. 
 
-    var numFound=0;
-    while (numFound<6)
-    {
 
+    // algoritem - start go over the numbers from 1
+    // stop condition - when 5 are found 
+    // how to check :
+    // for any number - convert to string - start iterate on its digits
+
+
+    var numAsStr = "", listToPrint = "";
+    var i, j = 0, sumOf, numFound = 0;
+
+    var howMany = prompt("How many happy Numbers you like to find ?");
+    var numHowMany = Number(howMany);
+
+    while (numFound < numHowMany) {
+
+        // for (var j = 0; j < 100; j++) { 
+        //PrintThis("--------- checking :"+j);       
+        //while (numFound < 6) {        
+        numAsStr = j.toString();
+        for (i = 0; i < 10; i++)  // do it 10 times
+        {
+            //PrintThis("checking :"+numAsStr);
+            sumOf = Number(checkSumOfDigist(numAsStr));
+            //PrintThis("sumOf :"+sumOf);
+            if (sumOf == 1) {
+                listToPrint = listToPrint + " , " + j;
+                numFound++;
+                break;
+            }
+            else {
+                numAsStr = sumOf.toString();
+            }
+        }
+        j++;
     }
-    
-
+    PrintThis("All Happy Numbers :" + listToPrint);
 
 
 };
@@ -87,14 +127,28 @@ function targil3() {
 }
 
 function targil4() {
-    var strLine;
-    for (var i = 1; i < 7; i++) {
-        strLine = "";
-        for (var j = 0; j < i; j++) {
-            strLine = strLine + "*";
-        }
-        PrintThis(strLine);
+
+    //  להגדיר מערך מספרי עם תוכן (נגיד 10 תאים).
+    // להדפיס את הערך המקסימאלי במערך
+    //להדפיס את סכום המערך
+    var x;
+    var myArr = [];
+    var maxValue , sumOf=0;
+
+    // insert 10 random number to the array
+    for (var i = 0; i < 10; i++) {
+        x = Math.floor((Math.random() * 50) + 1);
+        myArr.push(x);
     }
+    PrintThis("array contains 10 random numbers ==> " + myArr);
+    maxValue = myArr[0];
+    sumOf=maxValue;
+    for (var i = 1; i < 10; i++) {
+        if (myArr[i] > maxValue) { maxValue = myArr[i]; }
+        sumOf+= myArr[i];
+    }
+    PrintThis("Biggest is " + maxValue);
+    PrintThis("Total Sum  is " + sumOf);
 
 
 }
@@ -102,14 +156,27 @@ function targil5() {
     //5. Write a JavaScript program to compute the greatest common divisor (GCD) of two
     //positive integers.
 
-    // algoritem - take the smalles of them both
-    var x = prompt("Targil 5 - insert a number :");
-    var y = prompt("Targil 5 - insert another number :");
+    // algoritem - take the biggest of them both
+    var x = Number(prompt("Targil 5 - insert a number :"));
+    var y = Number(prompt("Targil 5 - insert another number :"));
     var big = x, small = y;
     if (y > x) {
         big = y;
         small = x;
     }
+    var startFrom = small;
+    ((big / 2) < small) ? startFrom = (big / 2) : void 0;
+    PrintThis(startFrom);
+
+    // start checking from hald the big one 
+    startFrom = Math.floor(startFrom);
+    for (var i = startFrom; i > 0; i--) {
+        if (((x % i) == 0) && ((y % i) == 0)) {
+            PrintThis("Greated division for " + x + " " + y + " is " + i);
+            break;
+        }
+    }
+
 
 
 }
