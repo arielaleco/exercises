@@ -1,0 +1,9 @@
+
+.RTL{
+    direction: rtl;
+}
+
+#mimic-console{
+    background-color: black;
+    color: white;
+}
