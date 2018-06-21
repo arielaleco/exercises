@@ -3,6 +3,7 @@ function DoExcercise() {
 
     PrintThis("----- Excercise 1 -----");
     //  targil1();
+    //ssss
     PrintThis("----- Excercise 2 -----");
     targil2();
     PrintThis("----- Excercise 3 -----");
